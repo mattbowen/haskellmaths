@@ -1,1 +1,1 @@
-Work from exercises in _The Haskell Road to Logic, Maths and Programming_ by Kees Doests and Jan van Eijck
+Work from exercises in _The Haskell Road to Logic, Maths and Programming_ by Kees Doets and Jan van Eijck
