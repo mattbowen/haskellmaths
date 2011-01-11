@@ -26,4 +26,11 @@ count c (x:xs) | c == x    = 1 + count c xs
 blowup :: String -> String
 blowup x = blowup' (length x) x
 blowup' l "" = ""
-blowup' l (x:xs) = replicate (l - length xs) x ++ blowup' l xs
+blowup' l (x:xs) = replicate' (l - length xs) x ++ blowup' l xs
+
+-- Matt's very own replicate, to see it I could build it out what what I already know
+replicate' :: Int -> Char -> String
+replicate' n x = [x] ++ (replicate'' (n - 1) [x])
+replicate'' :: Int -> String -> String
+replicate'' n x | n > 0     = x ++ (replicate'' (n -1) x)
+                | otherwise = ""
