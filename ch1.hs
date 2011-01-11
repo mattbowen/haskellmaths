@@ -24,5 +24,6 @@ count c (x:xs) | c == x    = 1 + count c xs
 
 -- ex 1.14
 blowup :: String -> String
-blowup "" = error "Empty string"
-blowup (x:xs) =  [x] ++ (blowup xs)
+blowup x = blowup' (length x) x
+blowup' l "" = ""
+blowup' l (x:xs) = replicate (l - length xs) x ++ blowup' l xs
