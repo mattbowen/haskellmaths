@@ -28,9 +28,15 @@ blowup x = blowup' (length x) x
 blowup' l "" = ""
 blowup' l (x:xs) = replicate' (l - length xs) x ++ blowup' l xs
 
--- Matt's very own replicate, to see it I could build it out what what I already know
+-- Matt's very own replicate, to see whether I could build it out what what I already know
 replicate' :: Int -> Char -> String
 replicate' n x = [x] ++ (replicate'' (n - 1) [x])
 replicate'' :: Int -> String -> String
 replicate'' n x | n > 0     = x ++ (replicate'' (n -1) x)
                 | otherwise = ""
+
+-- ex 1.15
+srtString :: String -> String
+srtString "" = ""
+srtString (x:xs) | x <= (head xs) = [x] ++ (srtString xs)
+                 | otherwise      = (srtString xs) ++ [x]
