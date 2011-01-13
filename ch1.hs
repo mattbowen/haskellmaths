@@ -36,7 +36,14 @@ replicate'' n x | n > 0     = x ++ (replicate'' (n -1) x)
                 | otherwise = ""
 
 -- ex 1.15
-srtString :: String -> String
-srtString "" = ""
-srtString (x:xs) | x <= (head xs) = [x] ++ (srtString xs)
-                 | otherwise      = (srtString xs) ++ [x]
+mnmChar :: String -> Char
+mnmChar "" = error "empty string"
+mnmChar [x] = x
+mnmChar (x:xs) = min x (mnmChar xs)
+
+minString :: String -> String -> String
+minString x y | min (head x) (head y) == (head x) = x
+              | otherwise = y
+
+-- srtString :: [String] -> [String]
+-- srtString "" = ""
