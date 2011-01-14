@@ -30,6 +30,12 @@ blowup x = blowup' (length x) x
 blowup' l "" = ""
 blowup' l (x:xs) = (replicate' (l - length xs) x) ++ (blowup' l xs)
 
+-- another, simpler way to do this
+blowup2 :: String -> String
+blowup2 x = blowup2' 1 x
+blowup2' c "" = ""
+blowup2' c (x:xs) = (replicate c x) ++ (blowup2' (c+1) xs)
+
 -- Matt's very own replicate, to see whether I could build it out what what I already know
 replicate' :: Int -> Char -> String
 replicate' n x = [x] ++ (replicate'' (n - 1) [x])
