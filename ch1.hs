@@ -23,6 +23,8 @@ count c (x:xs) | c == x    = 1 + count c xs
                | otherwise = count c xs
 
 -- ex 1.14
+-- I feel like passing l to blowup' in every call is unnecessary, but I can't think
+-- of another way to figure out where I am in the list but pass in the total length
 blowup :: String -> String
 blowup x = blowup' (length x) x
 blowup' l "" = ""
