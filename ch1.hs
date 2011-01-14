@@ -10,10 +10,11 @@ maxInt [] = error "empty list"
 maxInt [x] = x
 maxInt (x:xs) = max x (maxInt xs)
 
--- ex 1.10 -- this is wrong
-removeFst :: Int -> [Int] -> Int
-removeFst [] = error "empty list"
-removeFst t (x:xs) = x
+-- ex 1.10
+removeFst :: Int -> [Int] -> [Int]
+removeFst m [] = []
+removeFst m (x:xs) | m == x    = xs
+                   | otherwise = x:(removeFst m xs)
 
 -- ex 1.13 
 count :: Char -> String -> Int
@@ -35,10 +36,10 @@ replicate'' n x | n > 0     = x ++ (replicate'' (n -1) x)
                 | otherwise = ""
 
 -- ex 1.15
-removeFst' :: [String] -> String
-removeFst' [] = error "empty list"
-removeFst' [x] = x
-removeFst' c (x:xs) | x == c
+-- removeFst' :: [String] -> String
+-- removeFst' [] = error "empty list"
+-- removeFst' [x] = x
+-- removeFst' c (x:xs) | x == c
 
 mnmChar :: String -> Char
 mnmChar "" = error "empty string"
@@ -56,4 +57,4 @@ mnmString (x:xs) = minString x (mnmString xs)
 
 srtStrings :: [String] -> [String]
 srtStrings [] = []
-srtStrings xs = m : (srtStrings (removeFst' m xs)) where m = mnmString xs
+--srtStrings xs = m : (srtStrings (removeFst' m xs)) where m = mnmString xs
