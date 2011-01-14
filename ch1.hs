@@ -36,10 +36,10 @@ replicate'' n x | n > 0     = x ++ (replicate'' (n -1) x)
                 | otherwise = ""
 
 -- ex 1.15
--- removeFst' :: [String] -> String
--- removeFst' [] = error "empty list"
--- removeFst' [x] = x
--- removeFst' c (x:xs) | x == c
+removeFst' :: String -> [String] -> [String] -- I don't understand why this can't be a -> [a] -> [a]
+removeFst' m [] = []
+removeFst' m (x:xs) | m == x    = xs
+                   | otherwise = x:(removeFst' m xs)
 
 mnmChar :: String -> Char
 mnmChar "" = error "empty string"
@@ -57,4 +57,14 @@ mnmString (x:xs) = minString x (mnmString xs)
 
 srtStrings :: [String] -> [String]
 srtStrings [] = []
---srtStrings xs = m : (srtStrings (removeFst' m xs)) where m = mnmString xs
+srtStrings xs = m : (srtStrings (removeFst' m xs)) where m = mnmString xs
+
+-- ex 1.17
+prefix :: String -> String -> Bool
+prefix [] ys = True
+prefix (x:xs) [] = False
+prefix (x:xs) (y:ys) = (x==y) && prefix xs ys
+
+substring :: String -> String -> Bool
+substring xs [] = False
+substring xs (y:ys') = prefix xs (y:ys') || substring xs ys' 
